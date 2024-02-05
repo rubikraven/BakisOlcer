@@ -1,6 +1,4 @@
-# Yüz Tanıma ve E-posta Bildirimi
-
-Bu proje, OpenCV ve yagmail kütüphanelerini kullanarak bir web kamerası aracılığıyla yüz tanıma işlemi yapar ve belirli bir süre boyunca yüz algılandığında belirtilen bir e-posta adresine bildirim gönderir.
+# Bu Python projesi, bir evin kapısına veya penceresine keşif amaçlı olarak yaklaşık 10 saniye süreyle bakan kişileri algılayan bir sistemdir. Eğer bir kişi belirlenen süre boyunca bakışını devam ettirirse, sistem bu durumu algılar, sesli bir uyarı verir ve bu kişinin fotoğrafını çeker. Ayrıca, fotoğrafı bir e-posta olarak belirlenen alıcıya gönderebilir.
 
 ## Kullanılan Araçlar ve Teknolojiler
 
