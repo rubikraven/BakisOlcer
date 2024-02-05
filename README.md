@@ -10,7 +10,7 @@ Bu proje, OpenCV ve yagmail kütüphanelerini kullanarak bir web kamerası arac�
 - pyttsx3
 - yagmail
 
-Yüz tanıma işlemi için OpenCV'nin "haarcascade_frontalface_default.xml" dosyası kullanılmıştır. Bu dosyanın çalıştırılabilir dosyanın bulunduğu dizinde bulunması gerekmektedir.
+Yüz tanıma işlemi için OpenCV'nin "haarcascade_frontalface_default.xml" ve haarcascade_eye.xml dosyası kullanılmıştır. Bu dosyanın çalıştırılabilir dosyanın bulunduğu dizinde bulunması gerekmektedir.
 
 ## Kurulum ve Kullanım
 
