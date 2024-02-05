@@ -9,8 +9,8 @@ SMTP_PORT = 587
 SMTP_USERNAME = "gönderenin email adresi"
 SMTP_PASSWORD = "gönderenin mail şifresi"
 
-# Gönderilecek mail adresi
-MAIL_TO = "gönderilen email adresi"
+# gönderilecek mail adresi
+MAIL_TO = "Göndericek mail adresi"
 
 yag = yagmail.SMTP(SMTP_USERNAME, SMTP_PASSWORD)
 
@@ -20,6 +20,7 @@ engine.setProperty('voice', 'Turkish')
 engine.setProperty('rate', 195)
 
 face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+eye_cascade = cv2.CascadeClassifier("haarcascade_eye.xml")
 
 webcam = cv2.VideoCapture(0)
 
@@ -32,6 +33,16 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    for (x,y,w,h) in faces:
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = frame[y:y+h, x:x+w]
+
+        eyes = eye_cascade.detectMultiScale(roi_gray)
+        for (ex,ey,ew,eh) in eyes:
+            cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+            
+           
 
     if len(faces) > 0:
 
@@ -46,9 +57,10 @@ while True:
             winsound.Beep(2000, 500)
             cv2.putText(frame, "Supheli davranis!", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
             engine.say("kapıyı izleyen biri var!")
+            print("kapıyı izleyen biri var")
             engine.runAndWait()
 
-            # Save the image to a file
+            # İmajı kaydet
             cv2.imwrite("webcam.jpg", frame)
 
             yag.send(to=MAIL_TO, subject="Izlenme Uyarısı", contents=["webcam.jpg"])
